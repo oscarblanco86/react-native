@@ -4,13 +4,14 @@ import { globalStyles } from '@/styles/global-styles'
 import ThemeText from './components/ThemeText'
 import CalculatorButton from './components/CalculatorButton'
 import { Colors } from '@/constants/Colors'
-import * as Haptics from 'expo-haptics';
 import { useCalculator } from '@/hooks/Calculator'
 
 const CalculatorApp = () => {
   const {
     formula,
-    buildNumber
+    buildNumber,
+    clearNumber,
+    deleteNumber
   } = useCalculator();
   return (
     <View style={globalStyles.calculatorContainer}>
@@ -26,7 +27,7 @@ const CalculatorApp = () => {
           label="C"
           blackText
           color={Colors.lighGray}
-          onPress={() => buildNumber("C")} />
+          onPress={() => clearNumber()} />
         <CalculatorButton
           label="+/-"
           blackText
@@ -36,7 +37,8 @@ const CalculatorApp = () => {
           label="del"
           blackText
           color={Colors.lighGray}
-          onPress={() => buildNumber("del")} />
+          onPress={() => deleteNumber()} 
+          />
         <CalculatorButton
           label="/"
           color={Colors.orange}
@@ -105,11 +107,11 @@ const CalculatorApp = () => {
           label="0"
           largBtn
           color={Colors.darkGray}
-          onPress={() => buildNumber("C")} />
+          onPress={() => buildNumber("0")} />
         <CalculatorButton
           label="."
           color={Colors.darkGray}
-          onPress={() => buildNumber("+/-")} />
+          onPress={() => buildNumber(".")} />
         <CalculatorButton
           label="="
           color={Colors.orange}

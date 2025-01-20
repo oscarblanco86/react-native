@@ -1,4 +1,4 @@
-import { Text, Pressable } from 'react-native';
+import { Text, Pressable, Platform } from 'react-native';
 
 import * as Haptics from 'expo-haptics';
 
@@ -12,6 +12,9 @@ interface Props {
     largBtn?: boolean;
     onPress: () => void;
 }
+
+const isAndroid = Platform.OS  === 'android';
+
 
 const CalculatorButton = ({
     label,
@@ -28,7 +31,7 @@ const CalculatorButton = ({
         opacity: pressed ? 0.8 : 1,
     })}
     onPress={() => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        if (isAndroid)  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         onPress();
     }}
     >
