@@ -18,7 +18,7 @@ export const useCalculator = () => {
     const buildNumber = (numberString: string) => {
         console.log({numberString, number});
         //Verificar si ya existe el punto decimal
-        if (number.includes('.') numberStrin&& g === '.') return;
+        if (number.includes('.') && numberString  === '.') return;
         if (number.startsWith('0') || number.startsWith('-0')) {
             if (numberString === '.') setNumber(number + numberString);
         //     if (numberString ==='0' && number.includes('.')) setNumber(number + numberString );
@@ -33,10 +33,15 @@ export const useCalculator = () => {
         setPrevNumber('0');
         setFormula('0');
     };
-    // const toggleSign = (num) => {
-
-    // }
-    const deleteNumber = () => setNumber(number.slice(0,1));
+    const toggleSign = () => {
+        if (number.includes('-')) return setNumber(number.replace('-', ''));
+        setNumber('-' + number);
+    }
+    const deleteNumber = () => {
+        if (number.length === 2 && number.includes('-')) return setNumber('0');
+        if (number.length === 1) return setNumber('0');
+        setNumber(number.slice(0,-1))
+    };
     return {
         // props
         formula,
@@ -46,6 +51,7 @@ export const useCalculator = () => {
         // Methods
         buildNumber,
         clearNumber,
+        toggleSign,
         deleteNumber
     }
 }

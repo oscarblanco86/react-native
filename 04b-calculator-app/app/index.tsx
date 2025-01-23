@@ -11,7 +11,8 @@ const CalculatorApp = () => {
     formula,
     buildNumber,
     clearNumber,
-    deleteNumber
+    deleteNumber,
+    toggleSign
   } = useCalculator();
   return (
     <View style={globalStyles.calculatorContainer}>
@@ -32,7 +33,7 @@ const CalculatorApp = () => {
           label="+/-"
           blackText
           color={Colors.lighGray}
-          onPress={() => buildNumber("+/-")} />
+          onPress={() => toggleSign()} />
         <CalculatorButton
           label="del"
           blackText
