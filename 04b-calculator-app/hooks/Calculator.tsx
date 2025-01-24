@@ -12,9 +12,22 @@ export const useCalculator = () => {
     const [number, setNumber] = useState('0');
     const [prevNumber, setPrevNumber] = useState('0');
     const  lastOperation = useRef<Operator>();
+
     useEffect(() => {
-        setFormula(number);
-    },[number])
+      if (lastOperation.current) {
+        const firstFormulaPart = formula.split(' ').at(0);
+        setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`)
+      } else {
+        setFormula(number)
+      }
+    }, [number])
+    
+    
+    
+    // useEffect(() => {
+    //     setFormula(number);
+    // },[number])
+
     const buildNumber = (numberString: string) => {
         console.log({numberString, number});
         //Verificar si ya existe el punto decimal
@@ -42,6 +55,32 @@ export const useCalculator = () => {
         if (number.length === 1) return setNumber('0');
         setNumber(number.slice(0,-1))
     };
+    const setLastNumber = () => {
+        if (number.endsWith('.'))  setPrevNumber(number.slice(0,-1))
+        setPrevNumber(number)
+        setNumber('0')
+        
+    }
+    const divideOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.divide 
+    }
+    const multiplyOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.multiply 
+    }
+    const subtractOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.subtract 
+    }
+    const addOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.add 
+    }
+    const equalOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.add 
+    }
     return {
         // props
         formula,
@@ -52,6 +91,11 @@ export const useCalculator = () => {
         buildNumber,
         clearNumber,
         toggleSign,
-        deleteNumber
+        deleteNumber,
+        divideOperation,
+        multiplyOperation,
+        subtractOperation,
+        addOperation,
+        equalOperation
     }
 }

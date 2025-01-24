@@ -12,14 +12,26 @@ const CalculatorApp = () => {
     buildNumber,
     clearNumber,
     deleteNumber,
-    toggleSign
+    divideOperation,
+    toggleSign,
+    prevNumber,
+    multiplyOperation,
+    subtractOperation,
+    addOperation,
+    equalOperation
   } = useCalculator();
   return (
     <View style={globalStyles.calculatorContainer}>
       {/* Resultados */}
       <View style={{ padding: 30, marginBottom: 20 }}>
         <ThemeText variant='h1'>{formula}</ThemeText >
-        <ThemeText variant='h2'>250</ThemeText>
+        {
+          formula === prevNumber ? (
+            <ThemeText variant='h2'> </ThemeText>
+          ): (
+            <ThemeText variant='h2'>{ prevNumber }</ThemeText>
+          )
+        }
       </View>
       {/* Filas de botones */}
       <View style={globalStyles.row}>
@@ -43,7 +55,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="/"
           color={Colors.orange}
-          onPress={() => buildNumber("/")} />
+          onPress={divideOperation} />
       </View>
       <View style={globalStyles.row}>
         {/* boton 1 */}
@@ -62,7 +74,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="x"
           color={Colors.orange}
-          onPress={() => buildNumber("x")} />
+          onPress={multiplyOperation} />
       </View>
       <View style={globalStyles.row}>
         {/* boton 1 */}
@@ -81,7 +93,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="-"
           color={Colors.orange}
-          onPress={() => buildNumber("-")} />
+          onPress={subtractOperation} />
       </View>
       <View style={globalStyles.row}>
         {/* boton 1 */}
@@ -100,7 +112,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="+"
           color={Colors.orange}
-          onPress={() => buildNumber("+")} />
+          onPress={addOperation} />
       </View>
       <View style={globalStyles.row}>
         {/* boton 1 */}
@@ -116,7 +128,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="="
           color={Colors.orange}
-          onPress={() => buildNumber("=")} />
+          onPress={equalOperation} />
       </View>
     </View>
   )
