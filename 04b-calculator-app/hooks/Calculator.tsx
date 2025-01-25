@@ -22,11 +22,10 @@ export const useCalculator = () => {
       }
     }, [number])
     
-    
-    
-    // useEffect(() => {
-    //     setFormula(number);
-    // },[number])
+    useEffect(() => {
+        const subResult = equalOperation()
+        setPrevNumber(`${subResult}`)
+    },[formula])
 
     const buildNumber = (numberString: string) => {
         console.log({numberString, number});
@@ -78,8 +77,33 @@ export const useCalculator = () => {
         lastOperation.current = Operator.add 
     }
     const equalOperation = () => {
-        setLastNumber();
-        lastOperation.current = Operator.add 
+        const [ firstValue, operation, secondValue] = formula.split(' ')
+        const num1 = Number(firstValue)
+        const num2 = Number(secondValue)
+
+        if ( isNaN(num2)) return num1;
+
+        switch(operation) {
+            case Operator.add:
+                return num1 + num2
+            case Operator.subtract:
+                return num1 - num2
+            case Operator.divide:
+                return num1 / num2
+            case Operator.multiply:
+                return num1 * num2
+            case Operator.add:
+                return num1 + num2
+            default:
+                throw new Error(`Operation ${ operation } not implemented`)
+        }
+    }
+    const equalResult = () => {
+        const result = String(equalOperation())
+        lastOperation.current = undefined
+        setPrevNumber('0')
+        setFormula(result)
+        return
     }
     return {
         // props
@@ -96,6 +120,7 @@ export const useCalculator = () => {
         multiplyOperation,
         subtractOperation,
         addOperation,
-        equalOperation
+        equalOperation,
+        equalResult
     }
 }

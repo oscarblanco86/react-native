@@ -8,9 +8,10 @@ import { globalStyles } from '@/styles/global-styles';
 
 import * as NavigationBar from 'expo-navigation-bar';
 
-const isAndroid = Platform.os === 'android';
+const isAndroid = Platform.OS === 'android';
 
 if (isAndroid) NavigationBar.setBackgroundColorAsync('black');
+
 
 const RootLayout = () => {
   const [loaded] = useFonts ({

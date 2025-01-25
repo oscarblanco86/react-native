@@ -1,7 +1,9 @@
-import { Text, Pressable } from 'react-native'
-import React from 'react'
-import { globalStyles } from '@/styles/global-styles';
+import { Text, Pressable, Platform } from 'react-native';
+
+import * as Haptics from 'expo-haptics';
+
 import { Colors } from '@/constants/Colors';
+import { globalStyles } from '@/styles/global-styles';
 
 interface Props {
     label: string;
@@ -10,6 +12,9 @@ interface Props {
     largBtn?: boolean;
     onPress: () => void;
 }
+
+const isAndroid = Platform.OS  === 'android';
+
 
 const CalculatorButton = ({
     label,
@@ -24,7 +29,12 @@ const CalculatorButton = ({
         backgroundColor: color,
         width: largBtn ? 180 : 80,
         opacity: pressed ? 0.8 : 1,
-    })}>
+    })}
+    onPress={() => {
+        if (isAndroid)  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        onPress();
+    }}
+    >
         <Text 
             style={{
                 ...globalStyles.buttonText,
