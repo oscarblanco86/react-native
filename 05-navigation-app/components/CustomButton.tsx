@@ -5,6 +5,7 @@ interface Props extends PressableProps {
     children: string;
     color?: 'primary' | 'secondary' | 'tertiary'
     variant?: 'contained' | 'text-only'
+    className?: string
 }
 
 const CustomButton = React.forwardRef(({
@@ -12,7 +13,8 @@ const CustomButton = React.forwardRef(({
     color = 'primary',
     onPress,
     onLongPress,
-    variant = 'contained'
+    variant = 'contained',
+    className
 }: Props, ref: React.Ref<View>) => {
     const btnColor = {
         primary: 'bg-primary',
@@ -29,7 +31,7 @@ const CustomButton = React.forwardRef(({
     if (variant == 'text-only') {
         return (
             <Pressable
-                className={`p-3`}
+                className={`p-3 ${className}`}
                 onPress={onPress}
                 onLongPress={onLongPress}
                 ref={ref}
@@ -41,7 +43,7 @@ const CustomButton = React.forwardRef(({
     }
     return (
         <Pressable
-            className={`p-3 rounded-md ${btnColor} active:opacity-90`}
+            className={`p-3 rounded-md ${btnColor} active:opacity-90 ${className}`}
             onPress={onPress}
             onLongPress={onLongPress}
             ref={ref}
