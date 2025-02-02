@@ -1,9 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
 const StackLayout = () => {
   return (
+    <><StatusBar style='dark'></StatusBar>
     <Stack
       screenOptions={{
         // headerShown: false,
@@ -13,32 +15,28 @@ const StackLayout = () => {
         }
       }}
     >
-      <Stack.Screen 
+      <Stack.Screen
         name='home/index'
         options={{
           title: 'Inicio'
-        }}
-      />
-      <Stack.Screen 
+        }} />
+      <Stack.Screen
         name='products/index'
         options={{
           title: 'Productos',
           // animation: 'ios',
-        }}
-      />
-      <Stack.Screen 
+        }} />
+      <Stack.Screen
         name='profile/index'
         options={{
           title: 'Perfil'
-        }}
-      />
-      <Stack.Screen 
+        }} />
+      <Stack.Screen
         name='settings/index'
         options={{
           title: 'Ajustes'
-        }}
-      />
-    </Stack>
+        }} />
+    </Stack></>
   )
 }
 
