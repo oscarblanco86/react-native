@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import { Link, router } from 'expo-router'
-import CustomButton from '@/components/CustomButton'
+import CustomButton from '@/components/shared/CustomButton'
 
 const HomeScreen = () => {
     return (
