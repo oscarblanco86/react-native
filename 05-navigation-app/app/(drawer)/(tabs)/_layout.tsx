@@ -12,7 +12,7 @@ const TabsLayout = () => {
       //   backgroundColor: 'black',
       // },
       // tabBarActiveBackgroundColor: 'red',
-      headerShown: false
+      // headerShown: false
      }}>
       <Tabs.Screen
         name="(stack)"

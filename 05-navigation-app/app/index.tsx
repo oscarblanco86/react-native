@@ -5,7 +5,7 @@ import React from 'react'
 const App = () => {
   // return <Redirect href='/(stack)/home' />
   // return <Redirect href='/tabs' />
-  return <Redirect href='/drawer' />
+  return <Redirect href='/home' />
   // for windows branch
   
   // return (
