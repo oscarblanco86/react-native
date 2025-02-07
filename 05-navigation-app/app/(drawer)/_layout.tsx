@@ -1,8 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text, Platform, StatusBar } from 'react-native'
 import React from 'react'
 import { Drawer } from 'expo-router/drawer'
 import { Ionicons } from '@expo/vector-icons'
 import CustomDrawer from '@/components/shared/CustomDrawer'
+import * as NavigationBar from 'expo-navigation-bar';
+// import { Platform, View } from 'react-native'
+
+const isAndroid = Platform.OS === 'android'
+if (isAndroid) NavigationBar.setBackgroundColorAsync('black')
 
 const DrawerLayout = () => {
     return (
@@ -21,6 +26,7 @@ const DrawerLayout = () => {
                 // }
             }}
         >
+            <StatusBar backgroundColor="black" />
             <Drawer.Screen
                 name="(tabs)" // This is the name of the page and must match the url from root
                 options={{

@@ -7,9 +7,9 @@ import { DrawerActions } from '@react-navigation/native'
 const HomeScreen = () => {
     const navigation = useNavigation()
     const onToggleDrawer = () => {
-            navigation.dispatch(DrawerActions.toggleDrawer)
-        }
-    
+        navigation.dispatch(DrawerActions.toggleDrawer)
+    }
+
     return (
         <SafeAreaView>
             <View className='px-10 mt-5'>
@@ -35,11 +35,11 @@ const HomeScreen = () => {
 
 
                 <Link href='/products' asChild>
-                    <CustomButton 
-                    className='mb-2' 
-                    variant='text-only'
-                    color='primary'
-                >Producs</CustomButton>
+                    <CustomButton
+                        className='mb-2'
+                        variant='text-only'
+                        color='primary'
+                    >Producs</CustomButton>
                 </Link>
 
                 <CustomButton
