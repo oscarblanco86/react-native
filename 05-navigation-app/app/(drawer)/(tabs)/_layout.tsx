@@ -1,45 +1,49 @@
-import { Tabs } from 'expo-router'
-import {FontAwesome} from '@expo/vector-icons'
-import {Ionicons} from '@expo/vector-icons'
-
+import { Ionicons } from '@expo/vector-icons';
+import { Tabs } from 'expo-router';
+import { View, Text } from 'react-native';
 const TabsLayout = () => {
   return (
-    <Tabs screenOptions={{ 
-        tabBarActiveTintColor: 'green',
-      // tabBarShowLabel: false,
-      // tabBarStyle: {
-      //   backgroundColor: 'black',
-      // },
-      // tabBarActiveBackgroundColor: 'red',
-      // headerShown: false
-     }}>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: 'indigo',
+        // headerShown: false,
+        // tabBarStyle: {
+        //   backgroundColor: 'black',
+        // },
+        // tabBarActiveBackgroundColor: 'red',
+      }}
+    >
       <Tabs.Screen
         name="(stack)"
         options={{
           title: 'Stack',
           headerShown: false,
-          tabBarIcon: ({ color }) => 
-            <Ionicons size={28} name="person-add-outline" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons size={28} name="person-add-outline" color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="home/index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => 
-            <Ionicons size={28} name="home" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons size={28} name="home-outline" color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="favorites/index"
         options={{
           title: 'Favoritos',
-          tabBarIcon: ({ color }) => 
-            <Ionicons size={28} name="star-outline" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons size={28} name="star-outline" color={color} />
+          ),
         }}
       />
     </Tabs>
-  )
-}
-
-export default TabsLayout
+  );
+};
+export default TabsLayout;

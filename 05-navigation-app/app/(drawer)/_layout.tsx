@@ -1,65 +1,58 @@
-import { View, Text, Platform, StatusBar } from 'react-native'
-import React from 'react'
-import { Drawer } from 'expo-router/drawer'
-import { Ionicons } from '@expo/vector-icons'
-import CustomDrawer from '@/components/shared/CustomDrawer'
-import * as NavigationBar from 'expo-navigation-bar';
-// import { Platform, View } from 'react-native'
-
-const isAndroid = Platform.OS === 'android'
-if (isAndroid) NavigationBar.setBackgroundColorAsync('black')
+import CustomDrawer from '@/components/shared/CustomDrawer';
+import { Ionicons } from '@expo/vector-icons';
+import { Drawer } from 'expo-router/drawer';
+import { Text } from 'react-native';
 
 const DrawerLayout = () => {
-    return (
-        <Drawer
-            drawerContent={CustomDrawer}
-            screenOptions={{
-                // headerShown: false,
-                overlayColor: 'rgba(0, 0, 0, 0.4)',
-                drawerActiveTintColor: 'rgba(27, 49, 172, 0.89)',
-                // headerShadowVisible: false,
-                sceneStyle: {
-                    backgroundColor: 'rgba(200,200,200,100)'
-                }
-                // sceneContainerStyle: {
-                //     backgroundColor: 'White',
-                // }
-            }}
-        >
-            <StatusBar backgroundColor="black" />
-            <Drawer.Screen
-                name="(tabs)" // This is the name of the page and must match the url from root
-                options={{
-                    headerShown: false,
-                    drawerLabel: 'Tabs + Stack',
-                    title: 'Tabs + Stack',
-                    drawerIcon: ({ color, size }) => (
-                        <Ionicons name='albums-outline' size={size} color={color} />
-                    )
-                }}
-            />
-            <Drawer.Screen
-                name="user/index" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: 'User',
-                    title: 'Usuario',
-                    drawerIcon: ({ color, size }) => (
-                        <Ionicons name='person-circle-outline' size={size} color={color} />
-                    )
-                }}
-            />
-            <Drawer.Screen
-                name="schedule/index" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: 'Horario',
-                    title: 'Horario',
-                    drawerIcon: ({ color, size }) => (
-                        <Ionicons name='calendar-outline' size={size} color={color} />
-                    )
-                }}
-            />
-        </Drawer>)
+  return (
+    <Drawer
+      drawerContent={CustomDrawer}
+      screenOptions={{
+        // headerShown: false,
+        overlayColor: 'rgba(0,0,0,0.4)',
+        drawerActiveTintColor: 'indigo',
+        headerShadowVisible: false,
+        sceneContainerStyle: {
+          backgroundColor: 'white',
+        },
+      }}
+    >
+      <Drawer.Screen
+        name="(tabs)" // This is the name of the page and must match the url from root
+        options={{
+          headerShown: false,
+          drawerLabel: 'Tabs + Stack',
+          title: 'Tabs + Stack',
 
-}
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="albums-outline" size={size} color={color} />
+          ),
+        }}
+      />
 
-export default DrawerLayout 
+      <Drawer.Screen
+        name="user/index" // This is the name of the page and must match the url from root
+        options={{
+          drawerLabel: 'User',
+          title: 'Usuario',
+
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="person-circle-outline" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Drawer.Screen
+        name="schedule/index"
+        options={{
+          drawerLabel: 'Horario',
+          title: 'Horario',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="calendar-outline" size={size} color={color} />
+          ),
+        }}
+      />
+    </Drawer>
+  );
+};
+export default DrawerLayout;

@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { Slot, SplashScreen, Stack } from 'expo-router'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { useFonts } from 'expo-font'
-import { Platform, StatusBar } from 'react-native'
-import * as NavigationBar from 'expo-navigation-bar';
+// import { Platform, StatusBar } from 'react-native'
+// import * as NavigationBar from 'expo-navigation-bar';
 
-const isAndroid = Platform.OS === 'android'
-if (isAndroid) NavigationBar.setBackgroundColorAsync('black')
+// const isAndroid = Platform.OS === 'android'
+// if (isAndroid) NavigationBar.setBackgroundColorAsync('black')
 
 import './global.css'
 
@@ -28,10 +28,11 @@ const RootLayout = () => {
 
     if (!fontsLoaded && !error) return null;
 
-
-
-    return <Slot />
-    // return <Stack />
+    return (
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Slot />
+        </GestureHandlerRootView>
+      );
 }
 
 export default RootLayout

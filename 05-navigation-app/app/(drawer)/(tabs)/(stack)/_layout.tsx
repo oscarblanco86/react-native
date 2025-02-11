@@ -2,23 +2,22 @@ import { Ionicons } from '@expo/vector-icons';
 import { DrawerActions, StackActions } from '@react-navigation/native';
 import { Stack, useNavigation } from 'expo-router';
 import { Text } from 'react-native';
-
 const StackLayout = () => {
   const navigation = useNavigation();
 
   const onHeaderLeftClick = (canGoBack: boolean) => {
     if (canGoBack) {
-      console.log("Can go back true")
-      navigation.dispatch(StackActions.pop())
-      return
+      navigation.dispatch(StackActions.pop());
+      return;
     }
-    console.log("Can go back");
-    navigation.dispatch(DrawerActions.toggleDrawer())
-  }
+
+    navigation.dispatch(DrawerActions.toggleDrawer);
+  };
 
   return (
     <Stack
       screenOptions={{
+        // headerShown: false,
         headerShadowVisible: false,
         contentStyle: {
           backgroundColor: 'white',
@@ -38,6 +37,7 @@ const StackLayout = () => {
         options={{
           title: 'Inicio',
         }}
+        onPress={console.log('Click en inicio')}
       />
       <Stack.Screen
         name="products/index"
@@ -45,6 +45,7 @@ const StackLayout = () => {
           title: 'Productos',
         }}
       />
+
       <Stack.Screen
         name="profile/index"
         options={{
@@ -60,5 +61,4 @@ const StackLayout = () => {
     </Stack>
   );
 };
-
 export default StackLayout;
