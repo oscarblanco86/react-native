@@ -24,7 +24,8 @@ const MainSlideshow = ({ movies }: Props) => {
             id={item.id}
             poster={item.poster}
             title={item.title}
-            imgClassName='shadow-lg rounded-2xl w-full h-full' />}
+            imgClassName='shadow-lg rounded-2xl w-full h-full' 
+          />}
         width={200}
         height={350}
         style={{

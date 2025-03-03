@@ -26,6 +26,7 @@ const HomeScreen = () => {
 
   }
 
+  // console.log('here is the topr rated data', topRatedQuery.data?.pages.flat())
   return (
     <ScrollView>
       <View className='mt-2' style={{ paddingTop: safeArea.top }}>
@@ -39,8 +40,9 @@ const HomeScreen = () => {
         />
         <MovieHorizontalList
           title="Mejor calificadas"
-          movies={topRatedQuery.data ?? []}
+          movies={topRatedQuery.data?.pages.flat() ?? []}
           className='mb-5'
+          loadNextPage={ topRatedQuery.fetchNextPage }
         />
         <MovieHorizontalList
           title="Por estrenar"

@@ -1,6 +1,7 @@
-import { View, Text, Pressable, Image } from 'react-native';
+import { View, Text, Pressable, Image, StyleSheet} from 'react-native';
 
-// import { Movie } from '@/infrastructure/interface/movie.interface';
+import { Movie } from '@/infraestructure/interface/movie.interface';
+import { router } from 'expo-router';
 
 interface Props {
     id: number;
@@ -8,27 +9,37 @@ interface Props {
     title?: string;
     smallPoster?: boolean;
     className?: string;
-    imgClassName?: string
+    // imgClassName?: string
 }
 
-const MoviePoster = ({ id, poster, smallPoster = false, title = '', className, imgClassName }: Props) => {
+const MoviePoster = ({ id, poster, smallPoster = false, title = '', className }: Props) => {
     return (
         <Pressable
             className={`active:opacity-90 px-2 ${MoviePoster}`}
             onPress={() => console.log('button pressed')}
         >
             <Image
-                className="shadow-lg rounded-2xl w-full h-full"
                 source={{ uri: poster }}
-                style={{
+                // className="shadow-lg rounded-2xl w-full h-full"
+                style={[{
                     width: smallPoster ? 85 : 150,
                     height: smallPoster ? 130 : 350,
-                    // border-radius: 1rem
-                }}
-                // resizeMode="cover"
+                },
+                styles.image,]
+            }
+                resizeMode="cover"
             />
-            {/* {title && <Text className=''>{title}</Text>} */}
         </Pressable>
     );
 };
+
+const styles = StyleSheet.create({
+    image: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        borderRadius: 16, // rounded-2xl equivalent
+    },
+})
 export default MoviePoster;

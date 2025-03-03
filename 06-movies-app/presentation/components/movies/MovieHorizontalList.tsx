@@ -1,5 +1,11 @@
-import { View, Text, FlatList, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { 
+  View, 
+  Text, 
+  FlatList, 
+  NativeSyntheticEvent, 
+  NativeScrollEvent 
+} from 'react-native'
 import { Movie } from '@/infraestructure/interface/movie.interface'
 import MoviePoster from './MoviePoster'
 
@@ -9,8 +15,19 @@ interface Props {
   className?: string
   loadNextPage?: () => void  
 }
-const MovieHorizontalList = ({ movies, title, className, loadNextPage}: Props) => {
+const MovieHorizontalList = ({ 
+  movies, 
+  title, 
+  className, 
+  loadNextPage
+}: Props) => {
   const isLoading = useRef(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      isLoading.current = false
+    }, 200)
+  }, [movies])
   
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (isLoading.current) return
@@ -26,6 +43,8 @@ const MovieHorizontalList = ({ movies, title, className, loadNextPage}: Props) =
     console.log('Cargar siguientes peliculas')
 
     loadNextPage && loadNextPage()
+
+    // isLoading.current = false
     
   }
   return (
@@ -35,7 +54,7 @@ const MovieHorizontalList = ({ movies, title, className, loadNextPage}: Props) =
         horizontal
         data={movies}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => `${item.id}`}
+        keyExtractor={(item, i) => item ? `${item.id}-${i}` : 'undefined'}
         renderItem={({ item }) =>
           <MoviePoster
             id={item.id}
