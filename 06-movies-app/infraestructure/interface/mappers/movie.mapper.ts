@@ -1,4 +1,5 @@
-import { Movie } from "../movie.interface"
+import { CompleteMovie, Movie } from "../movie.interface"
+import { MovieDBMovieResponse } from "../moviedb-movie.response"
 import { Result } from "../moviedb-response"
 
 export class MovieMapper {
@@ -11,6 +12,16 @@ export class MovieMapper {
             poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
             backdrop: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
             rating: movie.vote_average,
+        }
+    }
+    static fromTheMovieDBToCompleteMovie = ( movie: MovieDBMovieResponse): CompleteMovie => {
+        return {
+            ...this.fromTheMovieDBToMovie,
+            budget: movie.budget,
+            duration: movie.runtime,
+            genres: movie.genres.map( idG => idG.name),
+            orignalTitle: movie.original_title,
+            productionCompanies: movie.production_companies.map(idC => idC.name)
         }
     }
 }

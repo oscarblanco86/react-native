@@ -16,7 +16,7 @@ const MoviePoster = ({ id, poster, smallPoster = false, title = '', className }:
     return (
         <Pressable
             className={`active:opacity-90 px-2 ${MoviePoster}`}
-            onPress={() => console.log('button pressed')}
+            onPress={() => router.push(`/movie/${id}`)}
         >
             <Image
                 source={{ uri: poster }}
