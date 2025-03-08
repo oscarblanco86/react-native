@@ -2,7 +2,7 @@ import { nowPlayingAction } from '@/core/actions/movies/now-playing.action'
 import { popularMoviesAction } from '@/core/actions/movies/popular.action '
 import { topRatedAction } from '@/core/actions/movies/topRated.action'
 import { upcomingAction } from '@/core/actions/movies/upcoming.action'
-import {useInfiniteQuery, useQuery} from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 export const useMovies =() => {
     const nowPlayingQuery = useQuery({

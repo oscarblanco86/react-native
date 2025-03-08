@@ -9,9 +9,9 @@ export interface Movie {
 }
 
 export interface CompleteMovie extends Movie {
-    genres: string[]
-    duration: number
-    budget: number
-    orignalTitle: string
-    productionCompanies: string[]
+    genres: string[];
+    duration: number;
+    budget: number;
+    orignalTitle: string;
+    productionCompanies: string[];
 }

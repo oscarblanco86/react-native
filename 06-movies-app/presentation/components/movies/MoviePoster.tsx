@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         shadowRadius: 2,
         borderRadius: 16, // rounded-2xl equivalent
+        margin: 5,
     },
 })
 export default MoviePoster;

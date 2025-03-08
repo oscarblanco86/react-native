@@ -15,8 +15,17 @@ export class MovieMapper {
         }
     }
     static fromTheMovieDBToCompleteMovie = ( movie: MovieDBMovieResponse): CompleteMovie => {
+        const baseMovie = this.fromTheMovieDBToMovie(movie as Result);
         return {
-            ...this.fromTheMovieDBToMovie,
+            // ...this.fromTheMovieDBToMovie,
+            // id: movie.id,
+            // title: movie.title,
+            // description: movie.overview,
+            // releaseDate: new Date(movie.release_date),
+            // poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+            // backdrop: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
+            ...baseMovie,
+            rating: movie.vote_average,
             budget: movie.budget,
             duration: movie.runtime,
             genres: movie.genres.map( idG => idG.name),
