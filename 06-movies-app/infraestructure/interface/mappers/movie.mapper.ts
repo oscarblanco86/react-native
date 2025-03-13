@@ -1,3 +1,5 @@
+import { CastResponse } from "../cast-response"
+import { CastInterface } from "../cast.interface"
 import { CompleteMovie, Movie } from "../movie.interface"
 import { MovieDBMovieResponse } from "../moviedb-movie.response"
 import { Result } from "../moviedb-response"
@@ -14,7 +16,7 @@ export class MovieMapper {
             rating: movie.vote_average,
         }
     }
-    static fromTheMovieDBToCompleteMovie = ( movie: MovieDBMovieResponse): CompleteMovie => {
+    static fromTheMovieDBToCompleteMovie = ( movie: MovieDBMovieResponse ): CompleteMovie => {
         const baseMovie = this.fromTheMovieDBToMovie(movie as Result);
         return {
             // ...this.fromTheMovieDBToMovie,
