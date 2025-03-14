@@ -18,7 +18,7 @@ interface Props {
 }
 
 const MovieHeader = ({poster, originalTitle, title}: Props) => {
-    console.log(poster, originalTitle, title)
+    // console.log(poster, originalTitle, title)
     const { height: screenHeight } = useWindowDimensions()
     return (
         <>

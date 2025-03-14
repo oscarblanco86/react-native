@@ -4,10 +4,10 @@ import React from 'react'
 
 export const useMovieCast = (id: number) => {
     const movieCastQuery = useQuery({
-        queryKey: ['movie',id],
+        queryKey: ['cast',id],
         queryFn: () => getMovieCastAction(id),
-        staleTime: 100 * 60 * 500 * 24
+        staleTime: 100 * 60 * 60 * 24
     })
-    console.log("use movie cast query",movieCastQuery)
+    // console.log("use movie cast query",movieCastQuery)
   return {movieCastQuery}
 }
