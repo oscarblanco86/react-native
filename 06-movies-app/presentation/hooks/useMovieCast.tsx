@@ -6,8 +6,8 @@ export const useMovieCast = (id: number) => {
     const movieCastQuery = useQuery({
         queryKey: ['cast',id],
         queryFn: () => getMovieCastAction(id),
-        staleTime: 100 * 60 * 60 * 24
+        staleTime: 1000 * 60 * 60 * 24
     })
-    // console.log("use movie cast query",movieCastQuery)
-  return {movieCastQuery}
+    const cast = movieCastQuery.data || []
+  return {cast}
 }

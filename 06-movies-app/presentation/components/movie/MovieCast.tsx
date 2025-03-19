@@ -1,38 +1,31 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-// import { Cast } from '@/infraestructure/interface/cast-response'
-import { CastInterface } from '@/infraestructure/interface/cast.interface'
 import { useMovieCast } from '@/presentation/hooks/useMovieCast'
+import CastHorizontalList from '@/presentation/cast/CastHorizontalList'
 
 interface Props {
   movieId: number
 }
 
 const MovieCast = ({ movieId }: Props) => {
-  const { movieCastQuery } = useMovieCast(+movieId)
-  console.log("in movie cast")
-  console.log(movieCastQuery)
-  if (movieCastQuery.isLoading) {
-    return (
-      <View>
-        <Text>Loading Cast...</Text>
-      </View>
-    )
-  }
+  // console.log("in movie cast")
+  // console.log(useMovieCast(+movieId).cast)
 
-  if (movieCastQuery.isError) {
-    return (
-      <View>
-        <Text>Error loading cast: {movieCastQuery.error}</Text>
-      </View>
-    )
-  }
   return (
-    <View>
-      <Text>MovieCast</Text>
-      {/* <Text>{cast.}</Text> */}
+    <View className='mx-5'>
+      <Text
+        className={'font-bold text-2xl'}
+        style={[styles.heading]}>MovieCast</Text>
+      <CastHorizontalList cast = {useMovieCast(+movieId).cast}/>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  heading: {
+    textIndent: 3,
+    margin: 5
+  }
+})
 
 export default MovieCast

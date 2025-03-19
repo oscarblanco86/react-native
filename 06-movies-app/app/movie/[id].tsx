@@ -5,8 +5,6 @@ import { useMovie } from '@/presentation/hooks/useMovie';
 import MovieHeader from '@/presentation/components/movie/MovieHeader';
 import MovieDescription from '@/presentation/components/movie/MovieDescription';
 import MovieCast from '@/presentation/components/movie/MovieCast';
-import { useMovieCast } from '@/presentation/hooks/useMovieCast';
-import { getMovieCastAction } from '@/core/actions/movie/get-movie-cast.action';
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams()
