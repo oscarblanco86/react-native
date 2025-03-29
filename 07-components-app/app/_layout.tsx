@@ -1,19 +1,18 @@
+import { useEffect } from 'react';
+
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+
 import 'react-native-reanimated';
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
-import "./../global.css"
-
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { Text, View } from 'react-native';
 import { useThemeColor } from '@/hooks/useThemeColor';
-import ThemedView from '@/presentation/shared/ThemedView';
-import ThemedText from '@/presentation/shared/ThemedText';
+import { allRoutes } from '@/constants/Routes';
+
+import "./../global.css"
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -39,14 +38,37 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ backgroundColor: backgroundColor, flex: 1}}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <ThemedView margin>
-          <ThemedText type='h1' className='mt-20' >Hola mundo</ThemedText>
-          {/* <Stack>
-            
-          </Stack> */}
-          <StatusBar style="auto" />
+        <Stack
+          screenOptions={{
+            headerShadowVisible: false,
+            contentStyle: {
+              backgroundColor,
+            },
+            headerStyle: {
+              backgroundColor: backgroundColor,
+            },
+          }}
+        >
+          <Stack.Screen 
+            name='index'
+            options={{
+              title: ''
+            }}
+          />
 
-        </ThemedView>
+          {
+            allRoutes.map( route => (
+              <Stack.Screen 
+                key={ route.name }
+                name={ route.name }
+                options={{
+                  title: route.title
+                }}
+              />
+            ))
+          }
+          
+        </Stack>
       </ThemeProvider>
 
     </GestureHandlerRootView>
