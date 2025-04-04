@@ -17,6 +17,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 import { allRoutes } from '@/constants/Routes';
 
 import '../global.css';
+import { StatusBar } from 'expo-status-bar';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -72,6 +73,8 @@ export default function RootLayout() {
           ))}
         </Stack>
       </ThemeProvider>
+      <StatusBar style="auto" />
+
     </GestureHandlerRootView>
   );
 }
