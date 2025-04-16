@@ -33,4 +33,4 @@ const ThemedText = ({ className, type, ...rest }: Props) => {
     />
   );
 };
-export default ThemedText;
+export default ThemedText;  
