@@ -1,10 +1,10 @@
 import { ThemedText } from '@/components/ThemedText'
-import { usePuchNotifications } from '@/hooks/usePuchNotifications'
+import { usePushNotifications } from '@/hooks/usePushNotifications'
 import React from 'react'
 import { FlatList, View } from 'react-native'
 
 const PushApp = () => {
-    const {expoPushToken, notifications} = usePuchNotifications()
+    const {expoPushToken, notifications} = usePushNotifications()
   return (
     <View style= {{ marginHorizontal: 10, marginTop: 5}}>
       {/* <ThemedText>Token: {expoPushToken} </ThemedText> */}
