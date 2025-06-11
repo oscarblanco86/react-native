@@ -5,9 +5,6 @@ const LoadingScreen = () => {
   return (
     <View>
       <Text>LoadingScreen</Text>
-      <Text>LoadingScreen</Text>
-      <Text>LoadingScreen</Text>
-      <Text>LoadingScreen</Text>
     </View>
   )
 }
