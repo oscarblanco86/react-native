@@ -9,21 +9,14 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.oscarmb86.mapsapp"
+      "supportsTablet": true
     },
     "android": {
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyCsnc11VRu723ErTUawLDcp_VdKEV6fUnc"
-        }
-      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
-      "package": "com.oscarmb86.mapsapp"
+      "edgeToEdgeEnabled": true
     },
     "web": {
       "bundler": "metro",
