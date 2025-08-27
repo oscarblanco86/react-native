@@ -1,0 +1,7 @@
+# Ignore node_modules in any folder in this repo
+node_modules/
+
+# Common React Native extras
+.env
+.expo/
+.expo-shared/
