@@ -1,9 +1,8 @@
 export enum PermissionStatus {
-    CHECKING = 'CHECKING',
-    GRANTED = 'GRANTED',
-    DENIED = 'DENIED',
-    BLOCKED = 'BLOCKED',
-    LIMITED = 'LIMITED',
-    UNAVAILABLRE = 'UNAVAILABLRE',
-    UNDETERMINED = 'UNDETERMINED',
+    CHECKING = 'checking',
+    GRANTED = 'granted',
+    DENIED = 'denied',
+    LIMITED = 'limited',
+    UNAVAILABLE = 'unavailable',
+    UNDETERMINED = 'undetermined'
 }
