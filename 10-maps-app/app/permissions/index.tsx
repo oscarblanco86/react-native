@@ -1,15 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const MapScreen
- = () => {
+const PermissionScreen = () => {
   return (
     <View>
-      <Text>MapScreen
-        
-      </Text>
+      <Text>PermissionScreen</Text>
     </View>
   )
 }
 
-export default MapScreen
+export default PermissionScreen

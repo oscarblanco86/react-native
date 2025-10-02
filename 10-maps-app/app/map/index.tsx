@@ -1,13 +1,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const MapScreen
- = () => {
+const MapScreen = () => {
   return (
     <View>
-      <Text>MapScreen
-        
-      </Text>
+      <Text>MapScreen</Text>
     </View>
   )
 }
